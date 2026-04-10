@@ -6,11 +6,11 @@ import { UserPlus } from 'lucide-react';
 
 export const Register: React.FC = () => {
   const [formData, setFormData] = useState({
-    email: 'admin.event@venuly.com',
+    email: 'super.organizer.100@venuly.com',
     password: 'password123',
     verify_password: 'password123',
-    first_name: 'Admin',
-    last_name: 'Event',
+    first_name: 'Super',
+    last_name: 'Organizer',
     role: 'organizer' as 'customer' | 'organizer',
     referralCode: ''
   });
