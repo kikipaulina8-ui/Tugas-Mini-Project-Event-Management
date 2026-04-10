@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { authService } from '../../services/authService';
+import { useAuth } from '../../hooks/useAuth';
 import { UserPlus } from 'lucide-react';
 
 export const Register: React.FC = () => {
@@ -16,6 +17,7 @@ export const Register: React.FC = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -34,9 +36,22 @@ export const Register: React.FC = () => {
 
     try {
       await authService.register(formData);
-      navigate('/login');
+      await login({ email: formData.email, password: formData.password });
+      navigate('/');
     } catch (err: any) {
-      setError(err.response?.data?.meta?.message || err.response?.data?.message || 'Registration failed. Backend Error 500.');
+      const errorMsg = err.response?.data?.meta?.message || err.response?.data?.message || '';
+      
+      if (errorMsg.toLowerCase().includes('already exists') || errorMsg.toLowerCase().includes('duplicate')) {
+         try {
+           await login({ email: formData.email, password: formData.password });
+           navigate('/');
+           return;
+         } catch (loginErr) {
+           setError('Failed to auto-login to your existing account. Please go to Log In page.');
+         }
+      } else {
+         setError(errorMsg || 'Registration failed. Please try again.');
+      }
     } finally {
       setIsLoading(false);
     }
