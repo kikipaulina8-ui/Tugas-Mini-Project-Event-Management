@@ -49,11 +49,13 @@ export const Navbar: React.FC = () => {
                     </div>
                     <span>{user.name || 'User'}</span>
                   </button>
-                  <div className="absolute right-0 top-10 mt-2 w-48 bg-slate-800 rounded-md shadow-lg py-1 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 border border-slate-700">
-                    <Link to="/profile" className="block px-4 py-2 text-sm text-gray-300 hover:bg-slate-700 hover:text-white">Profile</Link>
-                    <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-slate-700 hover:text-red-300">
-                      Sign out
-                    </button>
+                  <div className="absolute right-0 top-full pt-2 w-48 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50">
+                    <div className="bg-slate-800 rounded-md shadow-lg py-1 border border-slate-700">
+                      <Link to="/profile" className="block px-4 py-2 text-sm text-gray-300 hover:bg-slate-700 hover:text-white">Profile</Link>
+                      <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-slate-700 hover:text-red-300">
+                        Sign out
+                      </button>
+                    </div>
                   </div>
                 </div>
               </>
