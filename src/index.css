@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-blue: #0f172a; /* slate-900 */
+  --color-brand-purple: #c084fc; /* purple-400 */
+  --color-brand-purple-dark: #7e22ce; /* purple-700 */
+  --color-brand-dark: #020617; /* slate-950 */
+}
+
+body {
+  background-color: var(--color-brand-dark);
+  color: #fff;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-blue);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-purple-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-purple);
+}
