@@ -5,12 +5,12 @@ import { UserPlus } from 'lucide-react';
 
 export const Register: React.FC = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    verify_password: '',
-    first_name: '',
-    last_name: '',
-    role: 'customer' as 'customer' | 'organizer',
+    email: 'admin.event@venuly.com',
+    password: 'password123',
+    verify_password: 'password123',
+    first_name: 'Admin',
+    last_name: 'Event',
+    role: 'organizer' as 'customer' | 'organizer',
     referralCode: ''
   });
   const [error, setError] = useState('');
