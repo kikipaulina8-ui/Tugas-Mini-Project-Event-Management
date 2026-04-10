@@ -66,7 +66,7 @@ export const EventDetail: React.FC = () => {
     
     try {
       await transactionService.createOrder({
-        eventId: event.id,
+        event_id: event.id,
         quantity: quantity,
       });
       setIsModalOpen(false);
