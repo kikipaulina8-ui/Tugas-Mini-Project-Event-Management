@@ -29,8 +29,9 @@ export const transactionService = {
     return res.data?.data || res.data;
   },
 
-  getOrders: async (): Promise<Order[]> => {
-    const res = await api.get('/order/list');
+  getOrders: async (role?: string): Promise<Order[]> => {
+    const endpoint = role === 'customer' ? '/order/my' : '/order/list';
+    const res = await api.get(endpoint);
     return res.data?.data || res.data || [];
   },
 };

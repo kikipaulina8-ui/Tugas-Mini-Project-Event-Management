@@ -52,7 +52,7 @@ export const Transactions: React.FC = () => {
   const fetchOrders = async () => {
     setIsLoading(true);
     try {
-      const data = await transactionService.getOrders();
+      const data = await transactionService.getOrders(user?.role);
       setOrders(data);
     } catch (error) {
       console.error("Failed to fetch orders", error);
